@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="insert data to todo_lists" author="TestUsers_xml">
+        <insert tableName="todo_lists">
+            <column name="display_name" value="Список дел 1"/>
+            <column name="created_datetime" value="2020-10-20 04:00:00 -8:00"/>
+            <column name="last_modified_datetime" value="2020-10-20 04:00:00 -8:00"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert data to todo_lists" author="TestUsers_xml">
+        <insert tableName="todo_lists">
+            <column name="display_name" value="Список дел 2"/>
+            <column name="created_datetime" value="2020-10-20 05:00:00 -8:00"/>
+            <column name="last_modified_datetime" value="2020-10-20 05:00:00 -8:00"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

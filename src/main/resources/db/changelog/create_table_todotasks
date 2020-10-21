@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="Create table todo_tasks" author="TestUsers_xml">
+
+        <createTable tableName="todo_tasks">
+            <column name="task_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="todo_list_id" type="bigint">
+                <constraints foreignKeyName="todo_list_id" nullable="false"/>
+            </column>
+            <column name="title" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+            <column name="body" type="character varying"/>
+            <column name="importance" type="int"/>
+            <column name="done" type ="boolean" defaultValue="false" />
+            <column name="created_datetime" type="timestamp with time zone"/>
+            <column name="last_modified_datetime" type="timestamp with time zone"/>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/create_table_todolists.xml
+  - include:
+      file: db/changelog/create_table_todotasks.xml
+  - include:
+      # data
+      file: db/changelog/insert_data_to_todolists.xml
