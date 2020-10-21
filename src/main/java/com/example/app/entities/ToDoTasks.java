@@ -13,10 +13,10 @@ public class ToDoTasks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "task_id")
-    private int taskId;
+    private UUID taskId;
 
     @Column(name = "todo_list_id", nullable = false)
-    private int todoListId;
+    private UUID todoListId;
 
     @Column(name = "created_datetime")
     private Date createdDateTime;
@@ -71,112 +71,112 @@ public class ToDoTasks {
     }
 */
     /**
-     * @return возвращает значение метки "Выполнено" для задачи
+     * @return - возвращает значение метки "Выполнено" для задачи
      */
     public Boolean isDone() {
         return done;
     }
 
     /**
-     * @param done метка "Выполнено" для задачи
+     * @param done - метка "Выполнено" для задачи
      */
     public void setDone(Boolean done) {
         this.done = done;
     }
 
     /**
-     * @return дата создания задачи
+     * @return - дата создания задачи
      */
     public Date getCreatedDateTime() {
         return createdDateTime;
     }
 
     /**
-     * @param createdDateTime дата создания задачи
+     * @param createdDateTime - дата создания задачи
      */
     public void setCreatedDateTime(Date createdDateTime) {
         this.createdDateTime = createdDateTime;
     }
 
     /**
-     * @return дата изменения задачи
+     * @return - дата изменения задачи
      */
     public Date getLastModifiedDateTime() {
         return lastModifiedDateTime;
     }
 
     /**
-     * @param lastModifiedDateTime дата изменения задачи
+     * @param lastModifiedDateTime - дата изменения задачи
      */
     public void setLastModifiedDateTime(Date lastModifiedDateTime) {
         this.lastModifiedDateTime = lastModifiedDateTime;
     }
 
     /**
-     * @return срочность задачи
+     * @return - срочность задачи
      */
     public int getImportance() {
         return importance;
     }
 
     /**
-     * @param importance срочность задачи
+     * @param importance - срочность задачи
      */
     public void setImportance(int importance) {
         this.importance = importance;
     }
 
     /**
-     * @return идентификатор задачи
+     * @return - идентификатор задачи
      */
-    public int getTaskId() {
+    public UUID getTaskId() {
         return taskId;
     }
 
     /**
-     * @param taskId идентификатор задачи
+     * @param taskId - идентификатор задачи
      */
-    public void setTaskId(int taskId) {
+    public void setTaskId(UUID taskId) {
         this.taskId = taskId;
     }
 
     /**
-     * @return идентификатор списка, к которому относится задача
+     * @return - идентификатор списка, к которому относится задача
      */
-    public int getTodoListId() {
+    public UUID getTodoListId() {
         return todoListId;
     }
 
     /**
-     * @param todoListId идентификатор списка, к которому относится задача
+     * @param todoListId - идентификатор списка, к которому относится задача
      */
-    public void setTodoListId(int todoListId) {
+    public void setTodoListId(UUID todoListId) {
         this.todoListId = todoListId;
     }
 
     /**
-     * @return краткое описание задачи
+     * @return - краткое описание задачи
      */
     public String getBody() {
         return body;
     }
 
     /**
-     * @param body краткое описание задачи
+     * @param body - краткое описание задачи
      */
     public void setBody(String body) {
         this.body = body;
     }
 
     /**
-     * @return название задачи
+     * @return - название задачи
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * @param title название задачи
+     * @param title - название задачи
      */
     public void setTitle(String title) {
         this.title = title;
