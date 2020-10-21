@@ -13,7 +13,7 @@ public class ToDoLists {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "list_id")
-    private int listId;
+    private UUID listId;
 
     @Column(name = "created_datetime")
     private Date createdDateTime;
@@ -25,56 +25,56 @@ public class ToDoLists {
     private String displayName;
 
     /**
-     * @return дата создания списка дел
+     * @return - дата создания списка дел
      */
     public Date getCreatedDateTime() {
         return createdDateTime;
     }
 
     /**
-     * @param createdDateTime дата создания списка дел
+     * @param createdDateTime - дата создания списка дел
      */
     public void setCreatedDateTime(Date createdDateTime) {
         this.createdDateTime = createdDateTime;
     }
 
     /**
-     * @return дата изменения списка дел
+     * @return - дата изменения списка дел
      */
     public Date getLastModifiedDateTime() {
         return lastModifiedDateTime;
     }
 
     /**
-     * @param lastModifiedDateTime дата изменения списка дел
+     * @param lastModifiedDateTime - дата изменения списка дел
      */
     public void setLastModifiedDateTime(Date lastModifiedDateTime) {
         this.lastModifiedDateTime = lastModifiedDateTime;
     }
 
     /**
-     * @return идентификатор списка дел
+     * @return - идентификатор списка дел
      */
-    public int getListId() {
+    public UUID getListId() {
         return listId;
     }
 
     /**
-     * @param listId идентификатор списка дел
+     * @param listId - идентификатор списка дел
      */
-    public void setListId(int listId) {
+    public void setListId(UUID listId) {
         this.listId = listId;
     }
 
     /**
-     * @return название списка дел
+     * @return - название списка дел
      */
     public String getDisplayName() {
         return displayName;
     }
 
     /**
-     * @param displayName название списка дел
+     * @param displayName - название списка дел
      */
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
