@@ -1,7 +1,8 @@
-package com.example.app.service;
+package com.example.app.impl;
 
 import com.example.app.entities.*;
 import com.example.app.repositries.*;
+import com.example.app.service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
@@ -11,7 +12,7 @@ import java.util.*;
  * Реализация интерфейса ToDoService
  */
 @Service
-public class ToDoServiceImpl implements ToDoService{
+public class ToDoTasksServiceImpl implements ToDoTasksService {
 
     private final ToDoListsRepo toDoListsRepo;
     private final ToDoTaskRepo toDoTaskRepo;
@@ -21,43 +22,9 @@ public class ToDoServiceImpl implements ToDoService{
      * @param toDoTaskRepo - репозиторий для таблиы toDoTasks
      */
     @Autowired
-    public ToDoServiceImpl(ToDoListsRepo toDoListsRepo, ToDoTaskRepo toDoTaskRepo) {
+    public ToDoTasksServiceImpl(ToDoListsRepo toDoListsRepo, ToDoTaskRepo toDoTaskRepo) {
         this.toDoListsRepo = toDoListsRepo;
         this.toDoTaskRepo = toDoTaskRepo;
-    }
-
-    @Override
-    public void createList(ToDoLists toDoList) {
-        toDoListsRepo.save(toDoList);
-    }
-
-    @Override
-    public List<ToDoLists> getLists() {
-        return toDoListsRepo.findAll();
-    }
-
-    @Override
-    public ToDoLists getTodoListById(UUID id) {
-        return toDoListsRepo.getOne(id);
-    }
-
-    @Override
-    public boolean updateTodoList(ToDoLists toDoList, UUID id) {
-        if (toDoListsRepo.isExistsById(id)) {
-            toDoList.setListId(id);
-            toDoListsRepo.save(toDoList);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteTodoList(UUID id) {
-        if (toDoListsRepo.isExistsById(id)) {
-            toDoListsRepo.deleteById(id);
-            return true;
-        }
-        return false;
     }
 
     @Override
