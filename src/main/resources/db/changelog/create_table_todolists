@@ -5,12 +5,9 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet id="Create table todo_lists" author="TestUsers_xml">
+    <changeSet id="2020-10-22-create-table-todo-lists" author="TestUsers_xml">
 
-        <createTable tableName="display_name">
-            <column name="list_id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
+        <createTable tableName="todo_lists">
             <column name="display_name" type="character varying">
                 <constraints nullable="false"/>
             </column>
@@ -18,6 +15,10 @@
             <column name="last_modified_datetime" type="timestamp with time zone"/>
         </createTable>
 
+    </changeSet>
+
+    <changeSet id="2020-10-22-add-primary-key-todo-lists" author="TestUsers_xml">
+        <addPrimaryKey tableName="todo_lists" columnNames="list_id" />
     </changeSet>
 
 </databaseChangeLog>

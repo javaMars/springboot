@@ -17,6 +17,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.liquibase:liquibase-core'
+    compile group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.3.4.RELEASE'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'

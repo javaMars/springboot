@@ -5,15 +5,9 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet id="Create table todo_tasks" author="TestUsers_xml">
+    <changeSet id="2020-10-22-create-table-todo-tasks" author="TestUsers_xml">
 
         <createTable tableName="todo_tasks">
-            <column name="task_id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="todo_list_id" type="bigint">
-                <constraints foreignKeyName="todo_list_id" nullable="false"/>
-            </column>
             <column name="title" type="character varying">
                 <constraints nullable="false"/>
             </column>
@@ -26,4 +20,13 @@
 
     </changeSet>
 
+    <changeSet id="2020-10-22-add-primary-key-to-todo-tasks" author="TestUsers_xml">
+        <addPrimaryKey tableName="todo_tasks" columnNames="task_id" constraintName="PK_todo_tasks"/>
+    </changeSet>
+
+    <changeSet id="2020-10-22-add-foreign-key-to-todo-tasks" author="TestUsers_xml">
+        <addForeignKeyConstraint baseColumnNames="todo_list_id" baseTableName="todo_tasks"
+                                 constraintName="FK_todo_tasks_todo_lists_list_id"
+                                 referencedColumnNames="list_id" referencedTableName="todo_lists"/>
+    </changeSet>
 </databaseChangeLog>
