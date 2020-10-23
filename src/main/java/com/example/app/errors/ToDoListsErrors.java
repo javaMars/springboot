@@ -5,30 +5,30 @@ import org.springframework.http.*;
 
 import java.time.*;
 
-public class ToDoErrors {
+public class ToDoListsErrors {
     private HttpStatus status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
     private String message;
     private String debugMessage;
 
-    private ToDoErrors() {
+    private ToDoListsErrors() {
         timestamp = LocalDateTime.now();
     }
 
-    ToDoErrors(HttpStatus status) {
+    ToDoListsErrors(HttpStatus status) {
         this();
         this.status = status;
     }
 
-    ToDoErrors(HttpStatus status, Throwable ex) {
+    ToDoListsErrors(HttpStatus status, Throwable ex) {
         this();
         this.status = status;
         this.message = "Unexpected error";
         this.debugMessage = ex.getLocalizedMessage();
     }
 
-    ToDoErrors(HttpStatus status, String message, Throwable ex) {
+    ToDoListsErrors(HttpStatus status, String message, Throwable ex) {
         this();
         this.status = status;
         this.message = message;

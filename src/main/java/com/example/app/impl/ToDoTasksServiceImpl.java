@@ -12,24 +12,24 @@ import java.util.*;
  * Реализация интерфейса ToDoService
  */
 @Service
-public class ToDoTasksServiceImpl implements ToDoTasksService {
+public class ToDoTasksServiceImpl implements IToDoTasksService {
 
-    private final ToDoListsRepo toDoListsRepo;
-    private final ToDoTaskRepo toDoTaskRepo;
+    private final IToDoListsRepo toDoListsRepo;
+    private final IToDoTaskRepo toDoTaskRepo;
 
     /**
      * @param toDoListsRepo - репозиторий для таблицы todoLists
      * @param toDoTaskRepo - репозиторий для таблиы toDoTasks
      */
     @Autowired
-    public ToDoTasksServiceImpl(ToDoListsRepo toDoListsRepo, ToDoTaskRepo toDoTaskRepo) {
+    public ToDoTasksServiceImpl(IToDoListsRepo toDoListsRepo, IToDoTaskRepo toDoTaskRepo) {
         this.toDoListsRepo = toDoListsRepo;
         this.toDoTaskRepo = toDoTaskRepo;
     }
 
     @Override
     public boolean createTask(ToDoTasks toDoTask, UUID listId) {
-        if (toDoListsRepo.isExistsById(listId)) {
+        if (toDoListsRepo.existsToDoListsByListId(listId)) {
             toDoTask.setTodoListId(listId);
             toDoTaskRepo.save(toDoTask);
             return true;
@@ -39,12 +39,12 @@ public class ToDoTasksServiceImpl implements ToDoTasksService {
 
     @Override
     public ToDoTasks getTodoTaskById(UUID id) {
-        return toDoTaskRepo.getOne(id);
+        return toDoTaskRepo.getByTaskId(id);
     }
 
     @Override
     public boolean updateTodoTask(ToDoTasks toDoTask, UUID id) {
-        if (toDoTaskRepo.isExistsById(id)) {
+        if (toDoTaskRepo.existsByTaskId(id)) {
             toDoTask.setTaskId(id);
             toDoTaskRepo.save(toDoTask);
             return true;
@@ -54,8 +54,8 @@ public class ToDoTasksServiceImpl implements ToDoTasksService {
 
     @Override
     public boolean deleteTodoTask(UUID id) {
-        if (toDoTaskRepo.isExistsById(id)) {
-            toDoTaskRepo.deleteById(id);
+        if (toDoTaskRepo.existsByTaskId(id)) {
+            toDoTaskRepo.deleteByTaskId(id);
             return true;
         }
         return false;
@@ -63,8 +63,8 @@ public class ToDoTasksServiceImpl implements ToDoTasksService {
 
     @Override
     public boolean markDoneTodoTask(UUID id) {
-        if (toDoTaskRepo.isExistsById(id)) {
-            ToDoTasks toDoTask = toDoTaskRepo.getOne(id);
+        if (toDoTaskRepo.existsByTaskId(id)) {
+            ToDoTasks toDoTask = toDoTaskRepo.getByTaskId(id);
             toDoTask.setDone(true);
             toDoTaskRepo.save(toDoTask);
             return true;

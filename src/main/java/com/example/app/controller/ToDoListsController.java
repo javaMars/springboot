@@ -3,6 +3,7 @@ package com.example.app.controller;
 import com.example.app.entities.*;
 import com.example.app.impl.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.data.domain.Page;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +42,10 @@ public class ToDoListsController {
      * @return -  - возвращает объект класса ResponseEntity для возврата ответов. С помощью него мы сможем в дальнейшем вернуть клиенту HTTP статус код и список списков.
      */
     @GetMapping("/ToDoLists")
-    public ResponseEntity<List<ToDoLists>> getLists() {
-        final List<ToDoLists> toDoLists = toDoService.getLists();
+    public ResponseEntity<Page<ToDoLists>> getLists(@RequestParam("page") int page, @RequestParam("size") int size,
+            @RequestParam("filter") String filter,
+            @RequestParam("sortBy") String sortBy, @RequestParam("sortDirection") String sortDirection) {
+        final Page<ToDoLists> toDoLists = toDoService.getLists(page, size, filter, sortBy, sortDirection);
 
         return toDoLists != null && !toDoLists.isEmpty()
                 ? new ResponseEntity<>(toDoLists, HttpStatus.OK)

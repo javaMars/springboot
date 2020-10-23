@@ -8,24 +8,24 @@ import java.util.*;
 /**
  * Интерфейс для работы с данными таблицы списка дел ToDoLists
  */
-public interface ToDoListsRepo extends JpaRepository<ToDoLists, Long> {
+public interface IToDoListsRepo extends JpaRepository<ToDoLists, Long> {
 
     /**
-     * @param id
+     * @param listId
      * @return
      */
-    boolean isExistsById(UUID id);
+    boolean existsToDoListsByListId(UUID listId);
 
     /**
-     * @param id
+     * @param listId
      */
-    void deleteById(UUID id);
+    void deleteToDoListsByListId(UUID listId);
 
     /**
-     * @param id
+     * @param listId
      * @return
      */
-    ToDoLists getOne(UUID id);
+    ToDoLists getByListId(UUID listId);
 }
 
 

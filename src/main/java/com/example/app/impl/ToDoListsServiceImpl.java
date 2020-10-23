@@ -2,8 +2,9 @@ package com.example.app.impl;
 
 import com.example.app.entities.*;
 import com.example.app.repositries.*;
-import com.example.app.service.ToDoListsService;
+import com.example.app.service.IToDoListsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -12,15 +13,15 @@ import java.util.*;
  * Реализация интерфейса ToDoService
  */
 @Service
-public class ToDoListsServiceImpl implements ToDoListsService {
+public class ToDoListsServiceImpl implements IToDoListsService {
 
-    private final ToDoListsRepo toDoListsRepo;
+    private final IToDoListsRepo toDoListsRepo;
 
     /**
      * @param toDoListsRepo - репозиторий для таблицы todoLists
      */
     @Autowired
-    public ToDoListsServiceImpl(ToDoListsRepo toDoListsRepo) {
+    public ToDoListsServiceImpl(IToDoListsRepo toDoListsRepo) {
         this.toDoListsRepo = toDoListsRepo;
     }
 
@@ -30,18 +31,23 @@ public class ToDoListsServiceImpl implements ToDoListsService {
     }
 
     @Override
-    public List<ToDoLists> getLists() {
-        return toDoListsRepo.findAll();
+    public Page<ToDoLists> getLists(int page, int size, String filter, String sortBy, String sortDirection){
+
+        if ("desc".equals(sortDirection)) {
+            return toDoListsRepo.findAll(PageRequest.of(page, size, Sort.by(sortBy).descending()));
+        } else {
+            return toDoListsRepo.findAll(PageRequest.of(page, size, Sort.by(sortBy).ascending()));
+        }
     }
 
     @Override
     public ToDoLists getTodoListById(UUID id) {
-        return toDoListsRepo.getOne(id);
+        return toDoListsRepo.getByListId(id);
     }
 
     @Override
     public boolean updateTodoList(ToDoLists toDoList, UUID id) {
-        if (toDoListsRepo.isExistsById(id)) {
+        if (toDoListsRepo.existsToDoListsByListId(id)) {
             toDoList.setListId(id);
             toDoListsRepo.save(toDoList);
             return true;
@@ -51,8 +57,8 @@ public class ToDoListsServiceImpl implements ToDoListsService {
 
     @Override
     public boolean deleteTodoList(UUID id) {
-        if (toDoListsRepo.isExistsById(id)) {
-            toDoListsRepo.deleteById(id);
+        if (toDoListsRepo.existsToDoListsByListId(id)) {
+            toDoListsRepo.deleteToDoListsByListId(id);
             return true;
         }
         return false;

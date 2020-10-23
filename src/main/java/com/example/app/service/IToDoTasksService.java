@@ -7,7 +7,7 @@ import java.util.*;
 /**
  *  Интерфейс для сервиса
  */
-public interface ToDoTasksService {
+public interface IToDoTasksService {
 
     /**
      * Создает новую задачу

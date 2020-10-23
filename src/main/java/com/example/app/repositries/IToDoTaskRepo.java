@@ -8,22 +8,22 @@ import java.util.*;
 /**
  * Интерфейс для работы с таблицей ToDoTasks.
  */
-public interface ToDoTaskRepo extends JpaRepository<ToDoTasks, Long> {
+public interface IToDoTaskRepo extends JpaRepository<ToDoTasks, Long> {
 
     /**
-     * @param id
+     * @param taskId
      * @return
      */
-    ToDoTasks getOne(UUID id);
+    ToDoTasks getByTaskId(UUID taskId);
 
     /**
-     * @param id
+     * @param taskId
      * @return
      */
-    boolean isExistsById(UUID id);
+    boolean existsByTaskId(UUID taskId);
 
     /**
-     * @param id
+     * @param taskId
      */
-    void deleteById(UUID id);
+    void deleteByTaskId(UUID taskId);
 }

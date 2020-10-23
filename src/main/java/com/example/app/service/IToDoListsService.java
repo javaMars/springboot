@@ -1,12 +1,14 @@
 package com.example.app.service;
 
 import com.example.app.entities.*;
+import org.springframework.data.domain.Page;
+
 import java.util.*;
 
 /**
  *  Интерфейс для сервиса
  */
-public interface ToDoListsService {
+public interface IToDoListsService {
 
     /**
      * Создает новый список
@@ -18,7 +20,7 @@ public interface ToDoListsService {
      * Возвращает список всех списков
      * @return список списков
      */
-    List<ToDoLists> getLists();
+    Page<ToDoLists> getLists(int page, int size, String filter, String sortBy, String sortDirection);
 
     /**
      * Возвращает список по его ID

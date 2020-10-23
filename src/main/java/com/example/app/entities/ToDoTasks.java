@@ -35,41 +35,7 @@ public class ToDoTasks {
 
     @Column(name = "done")
     private Boolean done;
-/*
-    /**
-     * Конструктор по умолчанию
-     */
-/*
-    public ToDoTasks() {
-        todoListId = 0;
-        createdDateTime = new Date();
-        lastModifiedDateTime = new Date();
-        title = "";
-        body = "";
-        importance = 1;
-        taskId = 0;
-        done = false;
-    }
-/*
-    /**
-     * @param todoListId идентификатор списка дел, к которому относится задача
-     * @param createdDateTime время создания задачи
-     * @param lastModifiedDateTime время изменения задачи
-     * @param title название задачи
-     * @param body краткое описание задачи
-     * @param importance срочность задачи
-     */
- /*   public ToDoTasks(int todoListId, Date createdDateTime, Date lastModifiedDateTime, String title, String body, int importance) {
-        this.todoListId = todoListId;
-        this.createdDateTime = createdDateTime;
-        this.lastModifiedDateTime = lastModifiedDateTime;
-        this.title = title;
-        this.body = body;
-        this.importance = importance;
-        taskId = 0;
-        done = false;
-    }
-*/
+
     /**
      * @return - возвращает значение метки "Выполнено" для задачи
      */
